@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 const amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://localhost', function (err, conn) {
-  conn.createChannel(function (err, ch) {
+// 많은 수신자에게 로그 메시지를 브로드 캐스팅하기 위한 예제 
+amqp.connect('amqp://localhost',  (err, conn) => {
+  conn.createChannel( (err, ch) => {
     var ex = 'logs';
     var msg = process.argv.slice(2).join(' ') || 'Hello World!';
 
-    // fanout 교환 타입
+    // fanout 타입의 교환
     ch.assertExchange(ex, 'fanout', {
       durable: false
     });
@@ -17,7 +18,7 @@ amqp.connect('amqp://localhost', function (err, conn) {
     console.log(" [x] Sent %s", msg);
   });
 
-  setTimeout(function () {
+  setTimeout( () => {
     conn.close();
     process.exit(0);
   }, 500);

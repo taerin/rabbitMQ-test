@@ -27,7 +27,7 @@ amqp.connect("amqp://localhost", (err, conn) => {
 
       // binding - change와 queue의 관계 / ch와 queue를 연결 시킴
       // $ rabbitmqctl list_bindings -> 기존의 바인딩 나열 명령어
-      ch.bindQueue(q.queue, ex, '');
+      ch.bindQueue(q.queue, ex, ''); // fanout은 마지막 매개 변수인 '교환 유형'에 빈 값으로 주어도 됨.
 
       ch.consume(q.queue, (msg) => {
         if (msg.content) {

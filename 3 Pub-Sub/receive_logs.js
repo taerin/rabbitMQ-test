@@ -21,7 +21,7 @@ amqp.connect("amqp://localhost", (err, conn) => {
     // 노드에서 아래와 같이 빈 문자열로 큐 이름을 제공하면, 
     // 랜덤으로 생성된 이름을 가진 non-durable queue가 생성됨.
     ch.assertQueue('', {
-      exclusive: true
+      exclusive: true // 선언한 연결이 닫히면 큐는 배타적으로 선언되었므로 삭제됨
     }, (err, q) => {
       console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
 

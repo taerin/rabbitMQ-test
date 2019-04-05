@@ -13,7 +13,7 @@ amqp.connect('amqp://localhost',  (err, conn) => {
     });
 
     // 두 번째 매개 변수로 빈 문자열은 특정한 큐에 메시지를 보내지 않는다는 뜻
-    // 대신 'log' exchange에 게시하기를 원함
+    // 대신 'log' exchange(큐로 보내는 역할을 하는 교환기)에 게시하기를 원함
     ch.publish(ex, '', Buffer.from(msg));
     console.log(" [x] Sent %s", msg);
   });

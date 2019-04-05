@@ -3,5 +3,11 @@
 $ rabbitmq-server 
 
 $ rabbitmqctl status
+
+# binding list
 $ rabbitmqctl list_bindings
+
+# exchages list
+$ rabbitmqctl list_exchanges
+
 ```

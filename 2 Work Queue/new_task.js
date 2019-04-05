@@ -10,9 +10,9 @@ amqp.connect("amqp://localhost", (err, conn) => {
     ch.assertQueue(q, {
       durable: true
     });
-
+    
     ch.sendToQueue(q, Buffer.from(msg), {
-      persistent: true
+      persistent: true // 메시지를 영구적(true)이거나 또는 일시적(false)으로 표시
     });
 
     console.log("[x] Sent '%s'", msg);
